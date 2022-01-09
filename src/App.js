@@ -1,25 +1,27 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Button from "./Button";
 import React, {
   useReducer,
   useState,
   useEffect,
   useRef,
   useLayoutEffect,
+  createContext,
 } from "react";
+import User from "./User";
+import Login from "./Login";
+
+export const AppContext = createContext(null); //used to pass props to every child in it
 
 function App() {
-  const ref = useRef(null);
-
+  const [username, setUsername] = useState("");
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Pedro</h1>
-        <button onClick={() => ref.current.alterToggle()}>
-          Button from parent
-        </button>
-        <Button ref={ref} />
+        <AppContext.Provider value={{username, setUsername}}>
+          <Login />
+          <User />
+        </AppContext.Provider>
       </header>
     </div>
   );
