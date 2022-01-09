@@ -9,6 +9,5 @@ export default function Child({ stringOrNumber }) {
 }
 
 Child.propTypes = {
-  stringOrNumber: propTypes.oneOfType([propTypes.string, propTypes.number])
-    .isRequired,
+  stringOrNumber: propTypes.oneOf(["loading", "Start"]).isRequired,
 };

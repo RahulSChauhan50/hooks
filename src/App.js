@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Child stringOrNumber={"someString"} />
+        <Child stringOrNumber={'loading'} />
       </header>
     </div>
   );
