@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Child renderable={<div>it is inside div</div>} />
+        <Child element={<input defaultValue={"some value"} />} />
       </header>
     </div>
   );
