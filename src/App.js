@@ -1,21 +1,25 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useReducer, useState, useEffect, useRef } from "react";
+import React, {
+  useReducer,
+  useState,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from "react";
 
 function App() {
-  const [data, setData] = useState([]);
+  useLayoutEffect(() => {
+    console.log("layouteffetc"); //called before the dom complete the Painting other than that same as useffect
+  }, []);
 
-  const inputRef = useRef(null);
-
-  const oncl = () => {
-    inputRef.current.focus();//used to call foucs method of input component
-  };
+  useEffect(() => {
+    console.log("useeffect"); //called after the DOM is done painting
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
         <h1>Pedro</h1>
-        <input type="text" placeholder="Ex..." ref={inputRef} />
-        <button onClick={oncl}>Change Name</button>
       </header>
     </div>
   );
