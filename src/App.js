@@ -8,7 +8,7 @@ function App() {
   const inputRef = useRef(null);
 
   const oncl = () => {
-    console.log(inputRef.current.value); //gives current value of the component
+    inputRef.current.focus();//used to call foucs method of input component
   };
   return (
     <div className="App">
