@@ -1,23 +1,21 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useReducer, useState, useEffect, useRef } from "react";
 
 function App() {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/comments")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      });
-  }, []); //if bracket is not provided then useEffect will be called on every state Changes
+
+  const inputRef = useRef(null);
+
+  const oncl = () => {
+    console.log(inputRef.current.value); //gives current value of the component
+  };
   return (
     <div className="App">
       <header className="App-header">
-        {data.map((val, ind) => (
-          <div>{val.body}</div>
-        ))}
+        <h1>Pedro</h1>
+        <input type="text" placeholder="Ex..." ref={inputRef} />
+        <button onClick={oncl}>Change Name</button>
       </header>
     </div>
   );
