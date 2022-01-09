@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Child element={<input defaultValue={"some value"} />} />
+        <Child stringOrNumber={"someString"} />
       </header>
     </div>
   );

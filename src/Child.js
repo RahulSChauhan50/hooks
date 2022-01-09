@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import propTypes from "prop-types";
-export default function Child({ element }) {
+export default function Child({ stringOrNumber }) {
   return (
     <div>
-      <h1>{element}</h1>
+      <h1>{stringOrNumber}</h1>
     </div>
   );
 }
 
 Child.propTypes = {
-  element: propTypes.element.isRequired,
+  stringOrNumber: propTypes.oneOfType([propTypes.string, propTypes.number])
+    .isRequired,
 };
