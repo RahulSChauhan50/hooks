@@ -2,36 +2,22 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useReducer, useState, useEffect } from "react";
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return {
-        ...state,
-        count: state.count + 1,
-      };
-    case "TOGGLE":
-      return {
-        ...state,
-        showText: !state.showText,
-      };
-    default:
-      return state;
-  }
-};
-
 function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0, showText: true });
-
-  const changeState = (event) => {
-    dispatch({ type: "INCREMENT" });
-    dispatch({ type: "TOGGLE" });
-  };
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/comments")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      });
+  }, []); //if bracket is not provided then useEffect will be called on every state Changes
   return (
     <div className="App">
       <header className="App-header">
-        <div>{state.count}</div>
-        <button onClick={(event) => changeState(event)}>Click</button>
-        {state.showText ? <div>this is a text</div> : <div></div>}
+        {data.map((val, ind) => (
+          <div>{val.body}</div>
+        ))}
       </header>
     </div>
   );
