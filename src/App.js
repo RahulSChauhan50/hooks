@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Child name={"sally"} age={24} />
+        <Child renderable={<div>it is inside div</div>} />
       </header>
     </div>
   );
